@@ -25,6 +25,7 @@ int main() {
 }
 
 double multiEpisodicRunner() {
+    //runs multiple episodes
     printf("Input parameters as prompted.\n");
     int input;
     struct State initialState;
@@ -49,6 +50,7 @@ double multiEpisodicRunner() {
 }
 
 double episodeRunner(struct State initialState, int numberTrials) {
+    //runs single episode
     struct State currentState {
         .x = initialState.x,
         .y = initialState.y
@@ -74,6 +76,7 @@ double episodeRunner(struct State initialState, int numberTrials) {
 }
 
 struct StateValue stateRunner(State initialState) {
+    //takes action and returns new state with value
     char* action = chooseDirection();
     struct StateValue stateValue = valueFunction(initialState, action);
     stateShiftNarrator(initialState, stateValue);
@@ -81,7 +84,7 @@ struct StateValue stateRunner(State initialState) {
 }
 
 char* chooseDirection() {
-    //returns random direction
+    //randomly chooses direction
 
     char* direction;
     int num = (rand() % (4)); //generates random number between 0 and 3
@@ -142,6 +145,7 @@ struct StateValue valueFunction(struct State state, char* action) {
 }
 
 void stateShiftNarrator(struct State initial, struct StateValue final) {
+    //narrates the shift
     printf("moving from (%d,%d) to (%d,%d) with reward "
            "%d, ", initial.x, initial.y, final.state.x, final.state.y, final.value);
 }
